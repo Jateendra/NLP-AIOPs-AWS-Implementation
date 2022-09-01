@@ -110,3 +110,39 @@ rm 'logs/running_logs.log'
     - You can see all the changes in DVC studio also : https://studio.iterative.ai/user/Jateendra/projects/DVC-NLP_Pipeline-AIOPs-zbmme52lxp?commits=4328285%2Cprimary
         You can do a lot of parameter changes in DVC studio and keep running the experiments.
         Which ever parameter suits best , you can choose that and merge with main branch .
+
+### CICD Running via AWS :
+
+ci-cd yaml :
+
+   PERSONAL_ACCESS_TOKEN setting :
+	
+	- PERSONAL_ACCESS_TOKEN : Profile -> Settings -> Developer Setting -> Github Apps -> Personal access tokens -> Create a token with checkmark "workflow" .
+	- Copy the code << copy the code >>
+	- Goto the Repository -> Settings -> Secrets -> Actions -> New repository secret ->
+		Name : PERSONAL_ACCESS_TOKEN
+		Value : << paste the code >>
+
+   AWS Setting :
+	- Login to AWS ( mypython1.pradhan@gmail.com )
+	- IAM -> Users -> Add Users -> aiops-pipeline-001 -> Check below :
+		Access key - Programmatic access
+		Password - AWS Management Console access
+	- Custom password ( << Give a password >> ) -> Next: Permissions
+	- Create a group "EC3-S3" , give permissions :
+		AmazonEC2FullAccess
+		AmazonS3FullAccess
+	- Attach existing policies directly
+		AmazonEC2FullAccess
+	- Next Tag -> Next Review -> Create User -> << Will generate access key >>
+
+      AWS_ACCESS_KEY_ID setting in Github :
+	
+	- Goto the Repository -> Settings -> Secrets -> Actions -> New repository secret ->
+		Name : AWS_ACCESS_KEY_ID
+		Value : << paste Access key ID >>
+
+		Name : AWS_SECRET_ACCESS_KEY
+		Value : << Secret access key >>
+
+    If you push the changes to Github , then all the execution will run . 
