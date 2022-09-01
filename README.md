@@ -124,16 +124,22 @@ ci-cd yaml :
 		Value : << paste the code >>
 
    AWS Setting :
+
 	- Login to AWS ( mypython1.pradhan@gmail.com )
+
 	- IAM -> Users -> Add Users -> aiops-pipeline-001 -> Check below :
 		Access key - Programmatic access
 		Password - AWS Management Console access
+
 	- Custom password ( << Give a password >> ) -> Next: Permissions
+
 	- Create a group "EC3-S3" , give permissions :
 		AmazonEC2FullAccess
 		AmazonS3FullAccess
+
 	- Attach existing policies directly
 		AmazonEC2FullAccess
+        
 	- Next Tag -> Next Review -> Create User -> << Will generate access key >>
 
       AWS_ACCESS_KEY_ID setting in Github :
